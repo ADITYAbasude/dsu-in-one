@@ -2,19 +2,20 @@
 
 void selectionsort(int *arr, int size)
 {
-    int temp, s = size;
+    int temp, s = size , small;
     for (int i = 0; i < size - 1; i++)
     {
-        for (int j = 0; j < s - 1; j++)
+        small = i;
+        for (int j = i+1; j < s ; j++)
         {
-            if (arr[i] < arr[j])
+            if (arr[j] < arr[small])
             {
-                temp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = temp;
+                temp = arr[small];
+                arr[small] = arr[i];
+                arr[i] = temp;
             }
         }
-        s--;
+
     }
     for (int i = 0; i < size; i++)
     {
@@ -24,7 +25,7 @@ void selectionsort(int *arr, int size)
 
 int main()
 {
-    int arr[] = {4, 1, 2, 7, 6 , 10 ,8}, size = 7;
+    int arr[3] = {4, 1, 2}, size = 3;
     selectionsort(arr, size);
     return 0;
 }
