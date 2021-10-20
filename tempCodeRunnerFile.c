@@ -1,2 +1,2 @@
-min = arr[0];
-    max = arr[9];
+s->arr[0] = 4;
+    // s->top++;

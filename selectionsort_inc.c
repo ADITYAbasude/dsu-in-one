@@ -2,30 +2,42 @@
 
 void selectionsort(int *arr, int size)
 {
-    int temp, s = size , small;
-    for (int i = 0; i < size - 1; i++)
+    int temp, s = size  , min;
+    for (int i = 0; i <= size - 1; i++)
     {
-        small = i;
-        for (int j = i+1; j < s ; j++)
+        min=i;
+        for (int j = i + 1; j < size; j++)
         {
-            if (arr[j] < arr[small])
+
+            if (arr[min] > arr[j])
             {
-                temp = arr[small];
-                arr[small] = arr[i];
-                arr[i] = temp;
+                min=j;
             }
         }
+        
 
-    }
-    for (int i = 0; i < size; i++)
-    {
-        printf("%d  ", arr[i]);
+        temp = arr[i];
+        arr[i] = arr[min];
+        arr[min] = temp;
     }
 }
+void display(int *arr, int size)
+{
+    for (int i = 0; i < size; i++)
+    {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+
+
 
 int main()
 {
-    int arr[3] = {4, 1, 2}, size = 3;
+    int arr[] = {4, 1, 2, 10}, size = sizeof(arr) / sizeof(arr[0]);
+
+    display(arr, size);
     selectionsort(arr, size);
+    display(arr, size);
     return 0;
 }
