@@ -82,92 +82,40 @@ char pop(struct stack *ptr)
     }
 }
 
-char *convertInfixToPostfix(char *infix, int size1)
+void convertInfixToPostfix(char *infix, int size1)
 {
-    // -------------variable declaration------------
-    int i = 0, j = 0;
-
-    // ------------stake values decleration---------
+    char *result;
     struct stack *s = (struct stack *)malloc(sizeof(struct stack));
     s->size = size1;
     s->top = -1;
     s->arr = (int *)malloc(s->size * sizeof(int));
-
-    // -------------coding of infix to postfix-------------
-    char *postfix = (char *)malloc((strlen(infix) + 1) * sizeof(char));
+    int i =0 , j= 0;
 
     while (infix[i] != '\0')
     {
+        char c = infix[i];
+        if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9')){
 
-        if (infix[i] == '(')
-        {
-            push(s, infix[i]);
-            i++;
+            result[j] = c;
+            j++;
         }
-        else if (infix[i] == ')')
-        {
-            push(s, infix[i]);
-            i++;
-        }
-
-        else if (infix[i] == '(')
-        {
-            while (infix[i] != ')')
-            {
-                postfix[j] = pop(s);
-                j++;
-                s->top++;
-            }
-            i++;
-        }
-
-        else
-        {
-            if (!operanderCheck(infix[i]))
-            {
-                postfix[j] = infix[i];
-                j++;
-                i++;
-            }
-            else if (operanderBigger(infix[i]) > operanderBigger(stackTop(s)))
-            {
-                push(s, infix[i]);
-                i++;
-            }
-
-            else
-            {
-                postfix[j] = pop(s);
-                j++;
-            }
-        }
+       
     }
 
     while (!isEmpty(s))
     {
-        if (s->arr[s->top] == '(')
-        {
-            pop(s);
-        }
-        else if (s->arr[s->top] == ')')
-        {
-            pop(s);
-        }
-
-        else
-        {
-            postfix[j] = pop(s);
-            j++;
-        }
+        result[j] = s->top;
+        pop(s);
+        j++;
     }
-    postfix[j] = '\0';
-    return postfix;
+
+    printf("%s", result);
 }
 
 int main()
 {
-    char *exp = "A+B/C*(D-AF)H";
+    char *exp = "a+b*c-(d/e+f*g*h)";
     int size = sizeof(exp) / sizeof(exp[0]);
-    printf("%s", convertInfixToPostfix(exp, size));
+    convertInfixToPostfix(exp, size);            
     return 0;
 }

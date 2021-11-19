@@ -1,2 +1,2 @@
-s->arr[0] = 4;
-    // s->top++;
+
+        printf("Queue is overflow 
