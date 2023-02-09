@@ -21,7 +21,7 @@ int stackTop(struct stack *sp)
 
 
 // ----------------------check it is operator or not-----------
-int operanderCheck(char infix)
+int operatorCheck(char infix)
 {
     if (infix == '+' || infix == '-' || infix == '*' || infix == '/' || infix == '$')
     {
@@ -70,7 +70,7 @@ void push(struct stack *ptr, char val)
 
 
 // -------------check which operator is biggest-----------------
-int operanderBigger(char infix)
+int operatorBigger(char infix)
 {
     if (infix == '$')
         return 4;
@@ -129,7 +129,7 @@ char *convertInfixToPostfix(char *infix, int size1)
 
     while (infix[i] != '\0')
     {
-        if (operanderBigger(infix[i]) > operanderBigger(stackTop(s)))
+        if (operatorBigger(infix[i]) > operatorBigger(stackTop(s)))
         {
             push(s, infix[i]);
             i++;
@@ -153,7 +153,7 @@ char *convertInfixToPostfix(char *infix, int size1)
 
         else
         {
-            if (!operanderCheck(infix[i]))
+            if (!operatorCheck(infix[i]))
             {
                 postfix[j] = infix[i];
                 j++;
