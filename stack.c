@@ -53,25 +53,6 @@ int isFull(struct stack *ptr)
     return 0;
 }
 
-void bubbleshort(struct stack *ptr)
-{
-    int temp;
-    // printf("%d" , ptr->top);
-    printf("\n");
-    for (int i = ptr->top; i < ptr->size; i++)
-    {
-        for (int j = i + 1; j < ptr->size; i++)
-        {
-            if (ptr->arr[i] > ptr->arr[j])
-            {
-                temp = ptr->arr[i];
-                ptr->arr[i] = ptr->arr[j];
-                ptr->arr[j] = temp;
-            }
-        }
-    }
-}
-
 int main()
 {
 
@@ -79,11 +60,10 @@ int main()
     s->size = 5;
     s->top = -1;
     s->arr = (int *)malloc(s->size * sizeof(int));
-
+    printf("Enter the element in stack\n");
     push(s);
     display(s);
-    // pop(s);
-    bubbleshort(s);
+    pop(s);
     display(s);
     if (isEmpty(s))
     {

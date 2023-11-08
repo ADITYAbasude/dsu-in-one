@@ -14,7 +14,7 @@ int main()
 
         if (num == arr[mid])
         {
-            printf("%d ", arr[mid] );
+            printf("%d ", arr[mid]);
             break;
         }
         else if (num > arr[mid])
@@ -27,7 +27,8 @@ int main()
         }
     }
 
-    if(arr[mid] != num){
+    if (arr[mid] != num)
+    {
         printf("Not found ");
     }
     return 0;
