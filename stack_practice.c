@@ -85,7 +85,7 @@ char *converter(char infix[])
             while ((x = pop()) != '(')
             {
                 postfix[j++] = x;
-                        }
+            }
         }
         else if (infix[i] == '+' || infix[i] == '-' || infix[i] == '*' || infix[i] == '/' || infix[i] == '^')
         {

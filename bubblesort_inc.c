@@ -24,7 +24,7 @@ void bubblesort(int *arr, int s)
 
 int main()
 {
-    int arr[5] = {999,75865,854,57,4};
+    int arr[5] = {999, 75865, 854, 57, 4};
     int size = 5;
     bubblesort(arr, size);
     return 0;
